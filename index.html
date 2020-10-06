@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <style media="screen">
+      body, a {
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="" action="index.html" method="post">
+      <input type="text" id="searchBox1" name="keyword" value="Daster Kencana Ungu"><br>
+      <button type="button" onclick="openAllSearchWindow()">
+        Cari
+      </button>
+    </form>
+    <div id="searchLinks" style="background-color:grey; color: blue">
+      LINK
+    </div>
+
+    <script type="text/javascript">
+
+      function wrapInAnchor(myLink, linkName) {
+        return "<a href='" + myLink + "' target='_blank'>" + linkName + "</a><br>";
+      }
+
+      function openAllSearchWindow() {
+
+        let searchQuery = document.getElementById("searchBox1").value;
+
+        let links =
+        [
+          "https://trends.google.com/trends/explore?date=all&geo=ID&q=" + searchQuery
+          , "https://www.facebook.com/marketplace/jakarta/search/?query=" + searchQuery
+          , "https://www.google.com/search?q=" + searchQuery + "&tbm=shop"
+          , "https://shopee.co.id/search?keyword=" + searchQuery
+          , "https://www.tokopedia.com/search?st=product&q=" + searchQuery
+          , "https://www.bukalapak.com/products?from=omnisearch&from_keyword_history=false&search%5Bkeywords%5D=" + searchQuery
+          , "https://www.jd.id/search?keywords=" + searchQuery
+          , "https://www.lazada.co.id/catalog/?q=" + searchQuery
+          , "https://www.blibli.com/jual/" + searchQuery
+          , "https://www.kaskus.co.id/search/fjb?q=" + searchQuery.replace(" ", "+")
+          , "https://www.olx.co.id/items/q-" + searchQuery.replace(" ", "-")
+          , "https://www.bhinneka.com/jual?cari=" + searchQuery.replace(" ", "+")
+        ];
+
+        let allLinks = " ";
+
+        for (let i = links.length - 1; i > -1; i--) {
+          allLinks +=  wrapInAnchor( links[i], links.length - i);
+        }
+
+        let myNav = document.querySelector("#searchLinks");
+
+        myNav.innerHTML = allLinks;
+
+        let newLinks = document.querySelectorAll("#searchLinks > a");
+
+        for (let i = 0; i < newLinks.length; i++) {
+          newLinks[i].click();
+        }
+      }
+    </script>
+  </body>
+</html>
