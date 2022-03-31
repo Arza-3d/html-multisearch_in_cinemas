@@ -51,7 +51,7 @@
         let allLinks = " ";
 
         for (let i = links.length - 1; i > -1; i--) {
-          allLinks +=  wrapInAnchor( links[i], links.length - i);
+          allLinks +=  wrapInAnchor( links[i], links[i]);
         }
 
         let myNav = document.querySelector("#searchLinks");
